@@ -31,7 +31,7 @@ namespace Task2
 
         override public string ToString()
         {
-            return Size.ToString() + " " + FirstName + " " + LastName + " " + Weight;
+            return String.Format("{0}, {1}, {2}, {3}", Size.ToString(), FirstName, LastName, Weight);
         }
 
     }

@@ -15,9 +15,9 @@ namespace Task2
 
             Console.WriteLine(human1.ToString());
 
-            Console.WriteLine("human2 before change: " + human2.Weight);
+            Console.WriteLine("human2 before change: {0}", human2.ToString());
             human2.updateSize(162);
-            Console.WriteLine("human2 after change: " + human2.Weight);
+            Console.WriteLine("human2 after change: {0}", human2.ToString());
 
         }
     }
