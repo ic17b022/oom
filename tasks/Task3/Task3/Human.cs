@@ -31,7 +31,7 @@ namespace Task3
 
         override public string ToString()
         {
-            return String.Format("{0}, {1}, {2}, {3}", Size.ToString(), FirstName, LastName, Weight.ToString(), isWarmblooded());
+            return String.Format("{0}, {1}, {2}, {3}, {4}", Size.ToString(), FirstName, LastName, Weight.ToString(), isWarmblooded());
         }
 
         public bool isWarmblooded()
