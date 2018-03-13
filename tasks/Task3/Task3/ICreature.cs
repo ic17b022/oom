@@ -9,7 +9,5 @@ namespace Task3
     interface ICreature
     {
         bool isWarmblooded();
-        string ToString();
-
     }
 }
