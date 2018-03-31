@@ -15,8 +15,9 @@ namespace Task3
                 new Human(178, "Hans", "Huber", 80),
                 new Lizard(15, 0.2M),
             };
-   
-            foreach(ICreature x in creatures){
+
+            foreach (ICreature x in creatures)
+            {
                 Console.WriteLine(x.ToString());
             }
         }
