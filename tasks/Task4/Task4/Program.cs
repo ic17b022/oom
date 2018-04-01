@@ -18,9 +18,9 @@ namespace Task4
             };
 
             JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.TypeNameHandling = TypeNameHandling.All;
+            settings.TypeNameHandling = TypeNameHandling.All;            
 
-            using (System.IO.StreamWriter streamWriter = System.IO.File.AppendText("jsonFile.json"))
+            using (System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(System.IO.File.Open("jsonFile.json", System.IO.FileMode.Create)))
             {
                 
                 streamWriter.Write(JsonConvert.SerializeObject(humans, Formatting.Indented, settings));
