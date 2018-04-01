@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task4
 {
@@ -11,26 +7,29 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            Human[] humans = new Human[]
+            ICreature[] creatures = new ICreature[]
             {
                 new Human(178, "Hans", "Huber", 80),
-                new Human(165, "Hanna", "Huber", 50)
+                new Human(165, "Hanna", "Huber", 50),
+                new Lizard(10, 0.1M),
+                new Lizard(15, 0.2M)
             };
 
             JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.TypeNameHandling = TypeNameHandling.All;            
+            settings.TypeNameHandling = TypeNameHandling.Auto;
+            settings.Formatting = Formatting.Indented;
 
             using (System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(System.IO.File.Open("jsonFile.json", System.IO.FileMode.Create)))
             {
                 
-                streamWriter.Write(JsonConvert.SerializeObject(humans, Formatting.Indented, settings));
+                streamWriter.Write(JsonConvert.SerializeObject(creatures, settings));
                 streamWriter.Flush();
                 
             }
 
             string json = System.IO.File.ReadAllText("jsonFile.json");
 
-            Human[] readHumans = JsonConvert.DeserializeObject<Human[]>(json);
+            ICreature[] readCreatures = JsonConvert.DeserializeObject<ICreature[]>(json, settings);
 
             Console.WriteLine(json);
         }
