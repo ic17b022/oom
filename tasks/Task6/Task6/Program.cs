@@ -34,6 +34,10 @@ namespace Task6
                 spinOff.ContinueWith(t => Console.WriteLine(t.Result));
             }
 
+            Task<string> waity = longAndHardWorkAsync(5000);
+            waity.ContinueWith(x => Console.WriteLine(x.Result));
+            Console.WriteLine("This should pop up before async finishes");
+
             //wait for sleepyheads to finish
             System.Threading.Thread.Sleep(15000);
         }
@@ -41,10 +45,17 @@ namespace Task6
         private static string longAndHardWork(int duration)
         {
             Console.WriteLine("received:" + duration);
-            System.Threading.Thread.Sleep(duration);    //This produces the expected output: Task finish randomly, repeatet runs yield different results
+            System.Threading.Thread.Sleep(duration);    //This produces the expected output: Tasks finish randomly, repeatet runs yield different results
             //System.Threading.Thread.Sleep(5000);      //This does not. A constant sleep timer will produce the same order every time. Why?
             return "I twiddled my thumbs for " + duration + " milliseconds!";
         }
 
+        private static async Task<string> longAndHardWorkAsync(int duration)
+        {
+            Console.WriteLine("async received:" + duration);
+            await Task.Delay(duration);
+
+            return "I twiddled my thumbs for " + duration + " milliseconds asynchroniously!";
+        }
     } 
 }
